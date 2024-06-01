@@ -85,9 +85,6 @@ img{
 .sec_03{
   margin-bottom: 80px;
 }
-.sec_03_content {
-
-}
 .content_03{
   display: flex;
   align-items: center;
@@ -107,4 +104,102 @@ img{
 .sec_03_p{
   margin-top: 20px;
   font-size: 16px;
+}
+.sec_04{
+  margin: 80px 0;
+}
+.sec_04_content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.content_04 {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.sec_04_h1{
+  margin-top: 20px;
+  font-size: 18px;
+}
+.sec_04_p {
+  margin-top: 10px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  color: #333;
+}
+.sec_04_p p{
+  margin-left: 10px;
+}
+.dli-clock {
+  display: inline-block;
+  vertical-align: middle;
+  color: #333;
+  line-height: 1;
+  position: relative;
+  width: 1em;
+  height: 1em;
+  border: 0.1em solid currentColor;
+  border-radius: 50%;
+  box-sizing: content-box;
+}
+.dli-clock::before, .dli-clock::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  background: currentColor;
+  border-radius: 0.1em;
+  transform: translate(-0.05em, 0.05em);
+}
+.dli-clock::before {
+  width: 0.1em;
+  height: 0.4em;
+}
+.dli-clock::after {
+  width: 0.35em;
+  height: 0.1em;
+}
+.sec_btn{
+  background-color: #cccc;
+  padding: 80px 0;
+}
+.btn01{
+  padding: 20px 80px;
+  background-color: #ef7995;
+  color: #fff;
+  text-align: center;
+}
+.btn02{
+  padding: 20px 80px;
+  background-color: #3b9446;
+  color: #fff;
+  text-align: center;
+}
+.sec_btn h2{
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+.btn_content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn_left{
+  background-color: #fff;
+  padding: 50px 100px 70px 100px;
+  text-align: center;
+}
+.btn_right{
+  background-color: #fff;
+  padding: 50px 100px 70px 100px;
+  text-align: center;
+}
+.btn_01{
+width: 48%;
+}
+.btn_02{
+width: 48%;
 }
