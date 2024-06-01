@@ -203,3 +203,34 @@ width: 48%;
 .btn_02{
 width: 48%;
 }
+.address{
+  margin-top: 500px;
+  margin-bottom: 80px;
+  text-align: center;
+}
+.address h3{
+  padding-bottom: 10px;
+}
+.address p{
+  padding-bottom: 10px;
+}
+.link{
+  border-top: gainsboro 1px solid;
+  border-bottom: gainsboro 1px solid;
+  padding-top: 30px;
+  padding-bottom: 80px;
+}
+.link .link_01{
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  color: #333;
+}
+.link .link_02{
+  text-align: right;
+}
+.footer{
+  text-align: center;
+  margin: 20px 0;
+  color: #333;
+}
