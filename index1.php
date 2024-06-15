@@ -6,9 +6,14 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>Hallo PHP World!</h1>
   <?php
-  echo "初めまして"
+    $message = '今日の日付：'. date('Y/m/d');
   ?>
+  <?php
+    define('TITLE','定数とは')
+  ?>
+  <h1>Hallo PHP World!</h1>
+  <p><?= $message ?></p>
+  <p><?= TITLE;?></p>
 </body>
 </html>
