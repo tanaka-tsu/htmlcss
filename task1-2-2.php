@@ -10,7 +10,7 @@
     define("TAX", 0.1);
   ?>
   <?php
-  $tax = 10%;
+  $tax = 10;
   $price1 = 100;
   $price1_with_tax = $price1 * (1 + TAX);
   $price2 = 200;
