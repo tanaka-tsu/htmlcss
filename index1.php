@@ -7,13 +7,17 @@
 </head>
 <body>
   <?php
-    $message = '今日の日付：'. date('Y/m/d');
+  $message = '今日の日付：'. date('Y/m/d');
   ?>
   <?php
-    define('TITLE','定数とは')
+  define('TITLE','配列とは');
+  $a = ['田中',100,'OK']
   ?>
   <h1>Hallo PHP World!</h1>
   <p><?= $message ?></p>
   <p><?= TITLE;?></p>
+  <p>
+    <?php print_r($a);?><br>
+  </p>
 </body>
 </html>
