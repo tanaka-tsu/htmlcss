@@ -10,8 +10,8 @@
   $message = '今日の日付：'. date('Y/m/d');
   ?>
   <?php
-  define('TITLE','配列とは');
-  $a = ['田中',100,'OK']
+  define('TITLE','演算子とは');
+  $a = ['田中',100,'OK'];
   ?>
   <h1>Hallo PHP World!</h1>
   <p><?= $message ?></p>
