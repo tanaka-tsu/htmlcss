@@ -9,7 +9,7 @@
   <?php
     function showString($str = '気合いだ！', $num = 3) {
       for ($i = 0; $i < $num;) {
-          echo $str;
+          echo $str . "<br>";
           $i++;
       }
     }
