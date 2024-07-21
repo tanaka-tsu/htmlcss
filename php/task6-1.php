@@ -7,13 +7,14 @@
 </head>
 <body>
   <?php
-    function showString($str = '気合いだ！', $num = 3) {
-      for ($i = 0; $i < $num;) {
+    function showString($str, $num) {
+      for($i = 0; $i < $num; $i++) {
           echo $str . "<br>";
-          $i++;
-      }
+          }
     }
-    showString();
+    $a = '気合いだ！';
+    $b = 3 ;
+    showString($a, $b);
   ?>
 </body>
 </html>

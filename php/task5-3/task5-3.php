@@ -16,15 +16,15 @@
       </tr>
     <?php
        $a = [
-        ['name' => '鉛筆', 'price1' => '100円', 'price2' => '110円'],
-        ['name' => '消しゴム', 'price1' => '200円', 'price2' => '220円'],
-        ['name' => '定規', 'price1' => '300円', 'price2' => '330円']
+        ['name' => '鉛筆', 'price1' => 100],
+        ['name' => '消しゴム', 'price1' => 200],
+        ['name' => '定規', 'price1' => 300]
       ];
       foreach ($a as $b) {
         echo "<tr>\n";
         echo '<td>' . $b['name'] . "</td>\n";
-        echo '<td>' . $b['price1'] . "</td>\n";
-        echo '<td>' . $b['price2'] . "</td>\n";
+        echo '<td>' . $b['price1'] . "円</td>\n";
+        echo '<td>' . $b['price1'] *1.1."円</td>\n";
         echo "</tr>\n";
     }
     ?>
