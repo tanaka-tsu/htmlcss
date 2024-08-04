@@ -1,3 +1,42 @@
+<?php
+$errorMessages = [];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // 必須項目のチェック
+    if (empty($_POST["name"])) {
+        $errorMessages[] = "お名前を入力してください。";
+    }
+    if (empty($_POST["furigana"])) {
+        $errorMessages[] = "フリガナを入力してください。";
+    }
+    if (empty($_POST["email"])) {
+        $errorMessages[] = "メールアドレスを入力してください。";
+    } elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+        $errorMessages[] = "正しいメールアドレスを入力してください。";
+    }
+    if (empty($_POST["phone"])) {
+        $errorMessages[] = "電話番号を入力してください。";
+    } elseif (!preg_match("/^\d{10,11}$/", $_POST["phone"])) {
+        $errorMessages[] = "電話番号は10桁または11桁で入力してください。";
+    }
+    if (empty($_POST["inquiry_type"])) {
+        $errorMessages[] = "お問い合わせ項目を選択してください。";
+    }
+    if (empty($_POST["message"])) {
+        $errorMessages[] = "お問い合わせ内容を入力してください。";
+    }
+    if (empty($_POST["acceptance-714"])) {
+        $errorMessages[] = "個人情報保護方針に同意してください。";
+    }
+
+    // エラーメッセージがない場合はフォームを送信
+    if (empty($errorMessages)) {
+        // フォームの処理をここに追加
+        echo "フォームが正常に送信されました。";
+        exit;
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -34,58 +73,58 @@
           <h1>お問い合わせ</h1>
           <p>お問い合わせや業務内容に関するご質問は、電話またはこちらのお問い合わせフォームより承っております。<br>後ほど担当者よりご連絡させていただきます</p>
         </div>
+
+
+ <?php
+    if (!empty($errorMessages)) {
+        echo '<div style="color: red;">';
+        foreach ($errorMessages as $message) {
+            echo '<p>' . htmlspecialchars($message) . '</p>';
+        }
+        echo '</div>';
+    }
+    ?>
+    <form action="task8-2.php" method="post">
         <div class="Form-Item">
-          <p class="Form-Item-Label">
-            お名前<span class="Form-Item-Label-Required">必須</span>
-          </p>
-          <input type="text" class="Form-Item-Input" placeholder="山田太郎">
+            <p class="Form-Item-Label">お名前<span class="Form-Item-Label-Required">必須</span></p>
+            <input type="text" class="Form-Item-Input" name="name" placeholder="山田太郎" value="<?php echo htmlspecialchars($_POST['name'] ?? ''); ?>">
         </div>
         <div class="Form-Item">
-          <p class="Form-Item-Label">
-            フリガナ<span class="Form-Item-Label-Required">必須</span>
-          </p>
-          <input type="text" class="Form-Item-Input" placeholder="ヤマダタロウ">
+            <p class="Form-Item-Label">フリガナ<span class="Form-Item-Label-Required">必須</span></p>
+            <input type="text" class="Form-Item-Input" name="furigana" placeholder="ヤマダタロウ" value="<?php echo htmlspecialchars($_POST['furigana'] ?? ''); ?>">
         </div>
         <div class="Form-Item">
-          <p class="Form-Item-Label">
-            メールアドレス<span class="Form-Item-Label-Required">必須</span>
-          </p>
-          <input type="email" class="Form-Item-Input" placeholder="info@fast-creademy.jp">
+            <p class="Form-Item-Label">メールアドレス<span class="Form-Item-Label-Required">必須</span></p>
+            <input type="email" class="Form-Item-Input" name="email" placeholder="info@fast-creademy.jp" value="<?php echo htmlspecialchars($_POST['email'] ?? ''); ?>">
         </div>
         <div class="Form-Item">
-          <p class="Form-Item-Label">
-            電話番号<span class="Form-Item-Label-Required">必須</span>
-          </p>
-          <input type="text" class="Form-Item-Input" placeholder="000-0000-0000">
+            <p class="Form-Item-Label">電話番号<span class="Form-Item-Label-Required">必須</span></p>
+            <input type="text" class="Form-Item-Input" name="phone" placeholder="000-0000-0000" value="<?php echo htmlspecialchars($_POST['phone'] ?? ''); ?>">
         </div>
         <div class="Form-Item">
-            <p class="Form-Item-Label">
-            お問い合わせ項目<span class="Form-Item-Label-Required">必須</span>
-            </p>
+            <p class="Form-Item-Label">お問い合わせ項目<span class="Form-Item-Label-Required">必須</span></p>
             <div class="cp_ipselect cp_sl01">
-              <select required>
-              <option value="" hidden>選択してください</option>
-              <option value="1">１</option>
-              <option value="2">２</option>
-              </select>
+                <select name="inquiry_type" required>
+                    <option value="" hidden>選択してください</option>
+                    <option value="1" <?php echo (isset($_POST['inquiry_type']) && $_POST['inquiry_type'] == '1') ? 'selected' : ''; ?>>１</option>
+                    <option value="2" <?php echo (isset($_POST['inquiry_type']) && $_POST['inquiry_type'] == '2') ? 'selected' : ''; ?>>２</option>
+                </select>
             </div>
         </div>
         <div class="Form-Item">
-          <p class="Form-Item-Label isMsg">
-            お問い合わせ内容<span class="Form-Item-Label-Required">必須</span>
-          </p>
-          <textarea class="Form-Item-Textarea" placeholder="こちらにお問い合わせ内容をご記入ください"></textarea>
+            <p class="Form-Item-Label isMsg">お問い合わせ内容<span class="Form-Item-Label-Required">必須</span></p>
+            <textarea class="Form-Item-Textarea" name="message" placeholder="こちらにお問い合わせ内容をご記入ください"><?php echo htmlspecialchars($_POST['message'] ?? ''); ?></textarea>
         </div>
         <div class="box_check">
-          <p class="Form-Item-Label isMsg">
-          個人情報保護方針<span class="Form-Item-Label-Required">必須</span>
-          </p>
-          <label>
-              <input type="checkbox" name="acceptance-714" value="1" aria-invalid="false" class="agree"> <a href="#" class="check">個人情報保護方針<span class="dli-external-link"><span></span></span></a>に同意します。
-          </label>
+            <p class="Form-Item-Label isMsg">個人情報保護方針<span class="Form-Item-Label-Required">必須</span></p>
+            <label>
+                <input type="checkbox" name="acceptance-714" value="1" <?php echo isset($_POST['acceptance-714']) ? 'checked' : ''; ?>> <a href="#" class="check">個人情報保護方針<span class="dli-external-link"><span></span></span></a>に同意します。
+            </label>
         </div>
         <input type="submit" class="Form-Btn" value="確認">
-      </div>
+    </form>
+
+
     </div>
     <section class="sec_btn">
       <div class="wrapper">
