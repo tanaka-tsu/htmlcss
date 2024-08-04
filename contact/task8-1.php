@@ -34,59 +34,58 @@
           <h1>お問い合わせ</h1>
           <p>お問い合わせや業務内容に関するご質問は、電話またはこちらのお問い合わせフォームより承っております。<br>後ほど担当者よりご連絡させていただきます</p>
         </div>
-        <form action="task8-1.php">
-          <div class="Form-Item">
+        <div class="Form-Item">
+          <p class="Form-Item-Label">
+            お名前<span class="Form-Item-Label-Required">必須</span>
+          </p>
+          <input type="text" class="Form-Item-Input" placeholder="山田太郎">
+        </div>
+        <div class="Form-Item">
+          <p class="Form-Item-Label">
+            フリガナ<span class="Form-Item-Label-Required">必須</span>
+          </p>
+          <input type="text" class="Form-Item-Input" placeholder="ヤマダタロウ">
+        </div>
+        <div class="Form-Item">
+          <p class="Form-Item-Label">
+            メールアドレス<span class="Form-Item-Label-Required">必須</span>
+          </p>
+          <input type="email" class="Form-Item-Input" placeholder="info@fast-creademy.jp">
+        </div>
+        <div class="Form-Item">
+          <p class="Form-Item-Label">
+            電話番号<span class="Form-Item-Label-Required">必須</span>
+          </p>
+          <input type="text" class="Form-Item-Input" placeholder="000-0000-0000">
+        </div>
+        <div class="Form-Item">
             <p class="Form-Item-Label">
-              お名前<span class="Form-Item-Label-Required">必須</span>
-            </p>
-            <input type="text" class="Form-Item-Input" name="name" placeholder="山田太郎">
-          </div>
-          <div class="Form-Item">
-            <p class="Form-Item-Label">
-              フリガナ<span class="Form-Item-Label-Required">必須</span>
-            </p>
-            <input type="text" class="Form-Item-Input" name="furigana" placeholder="ヤマダタロウ">
-          </div>
-          <div class="Form-Item">
-            <p class="Form-Item-Label">
-              メールアドレス<span class="Form-Item-Label-Required">必須</span>
-            </p>
-            <input type="email" class="Form-Item-Input" name="email" placeholder="info@fast-creademy.jp">
-          </div>
-          <div class="Form-Item">
-            <p class="Form-Item-Label">
-              電話番号<span class="Form-Item-Label-Required">必須</span>
-            </p>
-            <input type="text" class="Form-Item-Input" name="phone" placeholder="000-0000-0000">
-          </div>
-          <div class="Form-Item">
-            <p class="Form-Item-Label">
-              お問い合わせ項目<span class="Form-Item-Label-Required">必須</span>
+            お問い合わせ項目<span class="Form-Item-Label-Required">必須</span>
             </p>
             <div class="cp_ipselect cp_sl01">
-              <select name="inquiry_type" required>
-                <option value="" hidden>選択してください</option>
-                <option value="1">１</option>
-                <option value="2">２</option>
+              <select required>
+              <option value="" hidden>選択してください</option>
+              <option value="1">１</option>
+              <option value="2">２</option>
               </select>
             </div>
-          </div>
-          <div class="Form-Item">
-            <p class="Form-Item-Label isMsg">
-              お問い合わせ内容<span class="Form-Item-Label-Required">必須</span>
-            </p>
-            <textarea class="Form-Item-Textarea" name="message" placeholder="こちらにお問い合わせ内容をご記入ください"></textarea>
-          </div>
-          <div class="box_check">
-            <p class="Form-Item-Label isMsg">
-              個人情報保護方針<span class="Form-Item-Label-Required">必須</span>
-            </p>
-            <label>
+        </div>
+        <div class="Form-Item">
+          <p class="Form-Item-Label isMsg">
+            お問い合わせ内容<span class="Form-Item-Label-Required">必須</span>
+          </p>
+          <textarea class="Form-Item-Textarea" placeholder="こちらにお問い合わせ内容をご記入ください"></textarea>
+        </div>
+        <div class="box_check">
+          <p class="Form-Item-Label isMsg">
+          個人情報保護方針<span class="Form-Item-Label-Required">必須</span>
+          </p>
+          <label>
               <input type="checkbox" name="acceptance-714" value="1" aria-invalid="false" class="agree"> <a href="#" class="check">個人情報保護方針<span class="dli-external-link"><span></span></span></a>に同意します。
-            </label>
-          </div>
-          <input type="submit" class="Form-Btn" value="確認">
-        </form>        
+          </label>
+        </div>
+        <input type="submit" class="Form-Btn" value="確認">
+      </div>
     </div>
     <section class="sec_btn">
       <div class="wrapper">

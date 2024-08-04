@@ -31,13 +31,16 @@ class Staff {
     }
 }
 
-$staff1 = new Staff("佐藤 一郎", 31, "男");
-$staff2 = new Staff("山田 花子", 25, "女");
-$staff3 = new Staff("鈴木 次郎", 27, "男");
+$staff[1] = new Staff("佐藤 一郎", 31, "男");
+$staff[2] = new Staff("山田 花子", 25, "女");
+$staff[3] = new Staff("鈴木 次郎", 27, "男");
 
-$staff1->show();
-$staff2->show();  
-$staff3->show();  
+// $staff[1]->show();
+// $staff[2]->show();  
+// $staff[3]->show();  
+foreach($staff as $a){
+    $a->show() ;
+}
 
 ?>
 </body>
