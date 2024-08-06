@@ -1,7 +1,14 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>確認ページ</title>
+  <link rel="stylesheet" href="reset.css">
+</head>
 <?php
 $errorMessages = [];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // 必須項目のチェック
     if (empty($_POST["name"])) {
         $errorMessages[] = "お名前を入力してください。";
     }
@@ -30,10 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // エラーメッセージがない場合はフォームを送信
     if (empty($errorMessages)) {
-        // フォームの処理をここに追加
-        echo "フォームが正常に送信されました。";
-        exit;
-    }
+      // フォームの処理をここに追加
+      header("Location: task8-2.php");
+      exit;
+  }
 }
 ?>
 
@@ -73,9 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <h1>お問い合わせ</h1>
           <p>お問い合わせや業務内容に関するご質問は、電話またはこちらのお問い合わせフォームより承っております。<br>後ほど担当者よりご連絡させていただきます</p>
         </div>
-
-
- <?php
+    <?php
     if (!empty($errorMessages)) {
         echo '<div style="color: red;">';
         foreach ($errorMessages as $message) {
@@ -84,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo '</div>';
     }
     ?>
-    <form action="task8-2.php" method="post">
+    <form action="" method="post">
         <div class="Form-Item">
             <p class="Form-Item-Label">お名前<span class="Form-Item-Label-Required">必須</span></p>
             <input type="text" class="Form-Item-Input" name="name" placeholder="山田太郎" value="<?php echo htmlspecialchars($_POST['name'] ?? ''); ?>">
@@ -123,8 +128,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <input type="submit" class="Form-Btn" value="確認">
     </form>
-
-
     </div>
     <section class="sec_btn">
       <div class="wrapper">
