@@ -43,7 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -79,8 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="form_top">
           <h1>お問い合わせ</h1>
           <p>お問い合わせや業務内容に関するご質問は、電話またはこちらのお問い合わせフォームより承っております。<br>後ほど担当者よりご連絡させていただきます</p>
-        </div>
-    <?php
+          <br><?php
     if (!empty($errorMessages)) {
         echo '<div style="color: red;">';
         foreach ($errorMessages as $message) {
@@ -89,6 +87,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo '</div>';
     }
     ?>
+        </div>
+    
     <form action="" method="post">
         <div class="Form-Item">
             <p class="Form-Item-Label">お名前<span class="Form-Item-Label-Required">必須</span></p>
@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div class="Form-Item">
             <p class="Form-Item-Label">メールアドレス<span class="Form-Item-Label-Required">必須</span></p>
-            <input type="email" class="Form-Item-Input" name="email" placeholder="info@fast-creademy.jp" value="<?php echo htmlspecialchars($_POST['email'] ?? ''); ?>">
+            <input type="text" class="Form-Item-Input" name="email" placeholder="info@fast-creademy.jp" value="<?php echo htmlspecialchars($_POST['email'] ?? ''); ?>">
         </div>
         <div class="Form-Item">
             <p class="Form-Item-Label">電話番号<span class="Form-Item-Label-Required">必須</span></p>
@@ -126,7 +126,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="checkbox" name="acceptance-714" value="1" <?php echo isset($_POST['acceptance-714']) ? 'checked' : ''; ?>> <a href="#" class="check">個人情報保護方針<span class="dli-external-link"><span></span></span></a>に同意します。
             </label>
         </div>
-        <input type="submit" class="Form-Btn" value="確認">
+        <input type="submit" class="Form-Btn" value="
+        <?php if(empty($errorMessages)){echo'送信';} else {echo'確認';}?>
+        ">
     </form>
     </div>
     <section class="sec_btn">
