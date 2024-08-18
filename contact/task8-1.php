@@ -42,6 +42,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       exit;
   }
 }
+// データベース接続情報
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "consumer";
+
+// データベース接続の作成
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// 接続確認
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// フォームが送信された場合の処理
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = htmlspecialchars($_POST['name']);
+    $furigana = htmlspecialchars($_POST['furigana']);
+    $email = htmlspecialchars($_POST['email']);
+    $phone = htmlspecialchars($_POST['phone']);
+    $inquiry_type = htmlspecialchars($_POST['inquiry_type']);
+    $message = htmlspecialchars($_POST['message']);
+    $acceptance = isset($_POST['acceptance-714']) ? 1 : 0;
+
+    // データベースにデータを挿入
+    $sql = "INSERT INTO your_table_name (name, furigana, email, phone, inquiry_type, message, acceptance, created_at)
+            VALUES ('$name', '$furigana', '$email', '$phone', '$inquiry_type', '$message', '$acceptance', NOW())";
+
+    if ($conn->query($sql) === TRUE) {
+        // データ挿入成功時の処理
+        header("Location: task9-1.php");
+        exit();
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+
+$conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
