@@ -38,48 +38,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // エラーメッセージがない場合はフォームを送信
     if (empty($errorMessages)) {
       // フォームの処理をここに追加
-      header("Location: task8-2.php");
-      exit;
+      // header("Location: task8-2.php");
+      // exit;
   }
 }
 // データベース接続情報
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "consumer";
+// $servername = "localhost";
+// $username = "root";
+// $password = "root";
+// $dbname = "consumer";
 
-// データベース接続の作成
-$conn = new mysqli($servername, $username, $password, $dbname);
+// // データベース接続の作成
+// $conn = new mysqli($servername, $username, $password, $dbname);
 
-// 接続確認
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+// // 接続確認
+// if ($conn->connect_error) {
+//     die("Connection failed: " . $conn->connect_error);
+// }
 
-// フォームが送信された場合の処理
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = htmlspecialchars($_POST['name']);
-    $furigana = htmlspecialchars($_POST['furigana']);
-    $email = htmlspecialchars($_POST['email']);
-    $phone = htmlspecialchars($_POST['phone']);
-    $inquiry_type = htmlspecialchars($_POST['inquiry_type']);
-    $message = htmlspecialchars($_POST['message']);
-    $acceptance = isset($_POST['acceptance-714']) ? 1 : 0;
+// // フォームが送信された場合の処理
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $name = htmlspecialchars($_POST['name']);
+//     $furigana = htmlspecialchars($_POST['furigana']);
+//     $email = htmlspecialchars($_POST['email']);
+//     $phone = htmlspecialchars($_POST['phone']);
+//     $inquiry_type = htmlspecialchars($_POST['inquiry_type']);
+//     $message = htmlspecialchars($_POST['message']);
+//     $acceptance = isset($_POST['acceptance-714']) ? 1 : 0;
 
-    // データベースにデータを挿入
-    $sql = "INSERT INTO your_table_name (name, furigana, email, phone, inquiry_type, message, acceptance, created_at)
-            VALUES ('$name', '$furigana', '$email', '$phone', '$inquiry_type', '$message', '$acceptance', NOW())";
+//     // データベースにデータを挿入
+//     $sql = "INSERT INTO your_table_name (name, furigana, email, phone, inquiry_type, message, acceptance, created_at)
+//             VALUES ('$name', '$furigana', '$email', '$phone', '$inquiry_type', '$message', '$acceptance', NOW())";
 
-    if ($conn->query($sql) === TRUE) {
-        // データ挿入成功時の処理
-        header("Location: task9-1.php");
-        exit();
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-}
+//     if ($conn->query($sql) === TRUE) {
+//         // データ挿入成功時の処理
+//         header("Location: task9-1.php");
+//         exit();
+//     } else {
+//         echo "Error: " . $sql . "<br>" . $conn->error;
+//     }
+// }
 
-$conn->close();
+// $conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -127,7 +127,7 @@ $conn->close();
     ?>
         </div>
     
-    <form action="" method="post">
+    <form action="<?php if(empty($errorMessages)){echo "task8-2.php";}?>" method="post">
         <div class="Form-Item">
             <p class="Form-Item-Label">お名前<span class="Form-Item-Label-Required">必須</span></p>
             <input type="text" class="Form-Item-Input" name="name" placeholder="山田太郎" value="<?php echo htmlspecialchars($_POST['name'] ?? ''); ?>">
